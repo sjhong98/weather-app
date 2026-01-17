@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@plugin "tailwindcss-animate";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
 @font-face {
   font-family: 'Pretendard';
   src: url('../../fonts/Pretendard-Thin.woff2') format('woff2');
@@ -85,6 +90,38 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 a {
@@ -92,6 +129,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -101,6 +139,7 @@ body {
   display: flex;
   font-family: 'Pretendard', system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: #171717;
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: light) {
@@ -108,10 +147,66 @@ body {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* 웹킷 브라우저 (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  @media (max-width: 768px) {
+    width: 3px;
+    height: 3px;
+  }
+
+  @media (min-width: 768px) {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #333333;
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-sub-darker);
+}
+
+/* scrollbar-px 클래스: 스크롤바 트랙 양쪽에 24px 패딩 효과 */
+/* 웹킷 스크롤바의 한계로 인해 트랙에 배경을 주고 thumb가 그 안에서만 보이도록 함 */
+.scrollbar-px::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.scrollbar-px::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 수평 스크롤바: 좌우 24px 여백 - clip-path로 양쪽 24px 제거 */
+.scrollbar-px.overflow-x-scroll::-webkit-scrollbar,
+.scrollbar-px.overflow-x-auto::-webkit-scrollbar {
+  height: 3px;
+}
+
+.scrollbar-px.overflow-x-scroll::-webkit-scrollbar-thumb,
+.scrollbar-px.overflow-x-auto::-webkit-scrollbar-thumb {
+  background-color: var(--color-sub-darker);
+  border-radius: 2px;
+  clip-path: inset(0 24px);
+}
+
+p {
+  color: #EEEEEE;
 }

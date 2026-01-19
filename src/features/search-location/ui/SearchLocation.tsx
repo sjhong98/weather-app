@@ -1,32 +1,33 @@
-import { Input } from "@/shared/ui";
-import { useSearchLocation } from "../model";
+import { Input } from "@/shared/ui"
+
+import { useSearchLocation } from "../model"
 
 export default function SearchLocation() {
     const { filteredDistrictList, handleSelectLocation, search, setSearch } = useSearchLocation()
 
     return (
-        <div className="flex flex-col gap-2 w-full items-center relative">
+        <div className="flex flex-col w-full gap-2 items-center relative">
             <Input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className='w-full z-[4]'
                 placeholder='지역을 검색하세요'
             />
-            <div className='w-full rounded-lg overflow-hidden md:relative absolute top-12 left-0 md:z-[1] z-[5] md:bg-transparent bg-[#333333]'>
+            <div className='absolute left-0 top-12 w-full md:relative md:top-0 z-[5] md:z-[1] overflow-hidden rounded-lg bg-[#333333] md:bg-transparent'>
                 {filteredDistrictList.length > 0 ? (
-                    <div className="flex flex-col gap-2 mt-[-10px] w-full items-center md:max-h-[calc(100vh-220px)] max-h-[calc(100vh-400px)] pt-10 md:pb-[300px] pb-[100px] overflow-y-scroll">
+                    <div className="flex flex-col w-full gap-2 pt-10 pb-[100px] md:pb-[300px] mt-[-10px] max-h-[calc(100vh-400px)] md:max-h-[calc(100vh-220px)] items-center overflow-y-scroll">
                         {filteredDistrictList.map((district) => (
                             <div
                                 key={district}
                                 onClick={() => handleSelectLocation(district)}
-                                className="flex flex-col w-full px-10 rounded-full hover:bg-[#222222] duration-75 cursor-pointer py-1 mb-[-8px]"
+                                className="flex flex-col w-full px-10 py-1 mb-[-8px] rounded-full cursor-pointer duration-75 hover:bg-[#222222]"
                             >
                                 <p className="text-md">{district.replaceAll('-', ' ')}</p>
                             </div>
                         ))}
                     </div>
                 ) : filteredDistrictList.length === 0 && search.length > 0 && (
-                    <div className='w-full h-[200px] flex items-center justify-center'>
+                    <div className='flex w-full h-[200px] items-center justify-center'>
                         <p className='text-md'>검색 결과가 없습니다.</p>
                     </div>
                 )}

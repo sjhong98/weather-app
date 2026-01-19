@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+
 import { useWeather } from "@/entities/weather"
 import { koreaDistricts } from "@/shared/constants"
 

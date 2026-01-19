@@ -9,12 +9,12 @@ export default function LocationBookmarkCard(props: LocationBookmarkCardProps) {
     const { children, className, location, initialLoading, ...rest } = props
     return (
         <div
-            className={`flex flex-col rounded-lg bg-[#222222] p-2 aspect-square w-full hover:scale-[0.98] duration-150 cursor-pointer ${className}`}
+            className={`flex flex-col w-full aspect-square p-2 rounded-lg cursor-pointer duration-150 hover:scale-[0.98] bg-[#222222] ${className}`}
             {...rest}
         >
             <div className="flex flex-col gap-1">
-                <p className='text-[14px] font-semibold break-keep leading-[15px]'>{location?.district?.replaceAll('-', ' ')}</p>
-                <p className='text-[12px] font-semibold opacity-50 h-[16px] mb-[-4px] line-clamp-1 ellipsis'>{location?.title}</p>
+                <p className='font-semibold text-[14px] leading-[15px] break-keep'>{location?.district?.replaceAll('-', ' ')}</p>
+                <p className='font-semibold text-[12px] h-[16px] mb-[-4px] opacity-50 line-clamp-1 ellipsis'>{location?.title}</p>
             </div>
             {Boolean(location.weather?.current.temp) ? (
                 <>
@@ -24,26 +24,26 @@ export default function LocationBookmarkCard(props: LocationBookmarkCardProps) {
                             alt={location.weather?.current.weather[0].description}
                             className='w-16 h-16 mt-[-4px] mb-[-4px]'
                         />
-                        <p className="text-2xl font-bold">{location.weather?.current.temp.toFixed(1)}°C</p>
+                        <p className="font-bold text-2xl">{location.weather?.current.temp.toFixed(1)}°C</p>
                     </div>
                     <div className="flex flex-row w-full justify-between">
                         <div className="flex flex-col">
-                            <p className="text-[11px] font-semibold opacity-50">Max</p>
-                            <p className="text-sm font-semibold mt-[-4px]">{location.weather?.maxTemp.toFixed(1)}°C</p>
+                            <p className="font-semibold text-[11px] opacity-50">Max</p>
+                            <p className="font-semibold text-sm mt-[-4px]">{location.weather?.maxTemp.toFixed(1)}°C</p>
 
                         </div>
                         <div className="flex flex-col">
-                            <p className="text-[11px] font-semibold opacity-50">Min</p>
-                            <p className="text-sm font-semibold mt-[-4px]">{location.weather?.minTemp.toFixed(1)}°C</p>
+                            <p className="font-semibold text-[11px] opacity-50">Min</p>
+                            <p className="font-semibold text-sm mt-[-4px]">{location.weather?.minTemp.toFixed(1)}°C</p>
                         </div>
                     </div>
                 </>
             ) : initialLoading ? (
-                <div className='w-full flex flex-col items-center justify-center text-[12px] break-keep leading-[15px] text-center opacity-50'>
-                    <WbSunnyIcon sx={{ fontSize: 60 }} className='animate-pulse mt-[-80px]' />
+                <div className='flex flex-col w-full items-center justify-center text-center text-[12px] leading-[15px] break-keep opacity-50'>
+                    <WbSunnyIcon sx={{ fontSize: 60 }} className='mt-[-80px] animate-pulse' />
                 </div>
             ) : (
-                <div className='w-full flex flex-col items-center justify-center text-[12px] break-keep leading-[15px] text-center opacity-50'>
+                <div className='flex flex-col w-full items-center justify-center text-center text-[12px] leading-[15px] break-keep opacity-50'>
                     <p>날씨 정보를 찾을 수 없습니다.</p>
                 </div>
             )

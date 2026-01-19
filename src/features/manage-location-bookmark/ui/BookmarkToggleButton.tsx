@@ -1,5 +1,6 @@
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
+
 import type { Weather } from '@/shared/types'
 
 interface BookmarkButtonProps {
@@ -12,7 +13,7 @@ interface BookmarkButtonProps {
 
 export default function BookmarkToggleButton({ isBookmarked, toggleBookmark, setIsBookmarked, district, weather }: BookmarkButtonProps) {
     return (
-        <div className='absolute top-5 md:right-11 right-5 cursor-pointer' onClick={() => {
+        <div className='absolute top-5 right-5 md:right-11 cursor-pointer' onClick={() => {
             const result = toggleBookmark(district, weather)
             if (!result) return
 

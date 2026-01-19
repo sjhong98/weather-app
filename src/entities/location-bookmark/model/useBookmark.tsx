@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
+
 import { getBookmarkList } from "@/entities/location-bookmark"
 
 export default function useBookmark(district?: string | null) {

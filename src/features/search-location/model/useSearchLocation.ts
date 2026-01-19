@@ -1,7 +1,7 @@
-import useMediaQuery from "@mui/material/useMediaQuery"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useCallback, useEffect, useRef } from "react"
-import { useState } from "react"
+import useMediaQuery from "@mui/material/useMediaQuery"
+
 import { koreaDistricts } from "@/shared/constants"
 
 export default function useSearchLocation() {

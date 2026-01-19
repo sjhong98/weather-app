@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
+
 import type { Weather } from '@/shared/types'
 
 interface LocationBookmark {

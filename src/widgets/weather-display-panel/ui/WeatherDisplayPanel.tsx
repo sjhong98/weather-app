@@ -1,9 +1,11 @@
+import { useEffect } from "react"
+import dayjs from "dayjs"
+import 'dayjs/locale/ko'
+
 import { useBookmark } from '@/entities/location-bookmark'
 import { CurrentLocationInfo, CurrentWeatherInfo, EmptyWeather, HourlyWeatherList, LoadingWeather, MinMaxTemperature, useWeather } from '@/entities/weather'
 import { BookmarkToggleButton, useUpdateBookmark, WeatherTitleUpdateForm } from '@/features/manage-location-bookmark'
-import dayjs from "dayjs"
-import 'dayjs/locale/ko'
-import { useEffect } from "react"
+
 import { useCurrentDistrict } from ".."
 
 dayjs.locale('ko')
@@ -30,7 +32,7 @@ export default function WeatherDisplayPanel() {
     if (!currentDistrict) return null
 
     return (
-        <div className='flex flex-col gap-2 rounded-lg pt-5 bg-[#222222] md:w-[50vw] w-full h-[408px] relative overflow-hidden relative'>
+        <div className='flex flex-col w-full md:w-[50vw] h-[408px] gap-2 pt-5 relative overflow-hidden rounded-lg bg-[#222222]'>
             {/* 지역 정보 */}
             <div className={`flex flex-col gap-2`}>
                 {/* 선택된 지역 */}
@@ -41,8 +43,8 @@ export default function WeatherDisplayPanel() {
             </div>
 
             {weather ? (
-                <div className={`flex flex-col gap-10 md:mt-[-40px] mt-[-20px] ${weatherLoading ? 'opacity-20' : 'opacity-100'} duration-200 relative`}>
-                    <div className='flex flex-row justify-between md:pl-6 md:pr-12 pl-5 pr-5'>
+                <div className={`flex flex-col gap-10 mt-[-20px] md:mt-[-40px] relative ${weatherLoading ? 'opacity-20' : 'opacity-100'} duration-200`}>
+                    <div className='flex flex-row justify-between pl-5 pr-5 md:pl-6 md:pr-12'>
 
                         {/* 오늘 날씨 정보 */}
                         <CurrentWeatherInfo weather={weather} />

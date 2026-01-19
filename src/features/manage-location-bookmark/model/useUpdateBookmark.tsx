@@ -1,4 +1,5 @@
 import { useCallback } from "react"
+
 import { useBookmark, useBookmarkContext, getBookmarkList, setBookmarkList } from "@/entities/location-bookmark"
 import type { Weather } from "@/shared/types"
 

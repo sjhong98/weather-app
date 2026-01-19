@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react"
+
 import { useBookmarkContext, getBookmarkList } from "@/entities/location-bookmark"
 import { useWeather } from "@/entities/weather"
-import { useEffect, useState } from "react"
 
 export default function useBookmarkLocationWeather() {
     const { useWeatherQuries } = useWeather()

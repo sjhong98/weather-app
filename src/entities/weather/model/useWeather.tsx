@@ -1,6 +1,7 @@
-import { useQueries } from '@tanstack/react-query';
-import { useCallback } from "react";
-import { getAddressByCoordinates, getCoordinatesByCity, getWeatherByCoordinates } from '@/entities/weather';
+import { useCallback } from "react"
+import { useQueries } from '@tanstack/react-query'
+
+import { getAddressByCoordinates, getCoordinatesByCity, getWeatherByCoordinates } from '@/entities/weather'
 
 export default function useWeather() {
   const useWeatherQuries = (args: string[] | { lat: number, lon: number }[]) => {

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 export const getCoordinatesByCity = async (city: string) => {
     const response = await axios.post(

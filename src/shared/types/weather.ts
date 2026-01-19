@@ -1,6 +1,23 @@
-export default interface Weather {
-    current: any,
-    hourly: any[],
-    maxTemp: number,
-    minTemp: number,
-}
+export interface WeatherCurrent {
+    temp: number
+    weather: Array<{
+      icon: string
+      description: string
+    }>
+  }
+  
+  export interface WeatherHourly {
+    dt: number
+    temp: number
+    weather: Array<{
+      icon: string
+      description: string
+    }>
+  }
+  
+  export interface Weather {
+    current: WeatherCurrent
+    hourly: WeatherHourly[]
+    maxTemp: number
+    minTemp: number
+  }

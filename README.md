@@ -242,6 +242,8 @@ FSD 아키텍처의 목적이 유지보수성을 향상하고 파일을 찾기 �
 import { useBookmarkLocationWeather } from "@/widgets/bookmark-location-panel"
 ```
 
+<br />
+
 ## 2. Supabase Edge Function 이용한 Proxy
 
 openWeatherMap의 geocoding API 이용하여 주소 → 좌표 변환을 시도했으나, 한글 검색으로는 결과가 부정확하다는 판단 하에 다른 api를 탐색하였습니다. 카카오, 네이버, vWorld 등 좌표 변환 open api를 찾았고, 이 중에서 권한 신청 등의 절차가 최소화되어 있는 vWorld 디지털 트윈 국토 api를 채택하였습니다.
@@ -288,6 +290,8 @@ Deno.serve(async (req: Request) => {
 });
 ```
 
+<br />
+
 ## 3. Tanstack Query 날씨 데이터 패칭 전략
 
 ### 3-1. 캐싱과 리패칭
@@ -315,6 +319,8 @@ Deno.serve(async (req: Request) => {
 
 이에 최대한 수행 시간을 줄이고자, useQueries를 사용하여 각각의 queryFn들이 병렬로 실행되도록 구현하였습니다.
 
+<br />
+
 ## 4. Tailwind CSS breakpoint prefix 이용한 반응형 구현
 
 본 프로젝트는 데스크탑과 모바일 환경을 모두 지원하는 반응형 UI가 요구되었고, 이에 tailwind CSS breakpoint prefix를 이용했습니다. 
@@ -337,6 +343,8 @@ useMediaQuery와 같은 JS 로직을 통해 분기되는 UI가 버벅임 등 성
 구상한 디자인의 데스크탑 UI와 모바일 UI 간의 갭이 크지 않았습니다.
 
 레이아웃이 다르거나, 많은 요소가 다를 경우에는 오히려 가독성과 코드 복잡도를 높일 수 있지만, 충분히 구현 가능한 정도의 갭이라 판단했습니다.
+
+<br />
 
 ## 5. LocalStorage 활용
 

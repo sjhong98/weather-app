@@ -15,13 +15,13 @@ interface WeatherTitleUpdateFormProps {
 export default function WeatherTitleUpdateForm({ isBookmarked, handleSaveTitle, handleChangeTitle, titleInput, titleChanged, titleSaved }: WeatherTitleUpdateFormProps) {
     return (
         <>
-            <div className='flex flex-row items-center gap-2 px-12 relative z-[3] overflow-hidden'>
+            <div className='flex flex-row w-full items-center gap-2 lg:px-12 px-4 relative z-[3] overflow-hidden'>
                 {isBookmarked && (
-                    <form onSubmit={handleSaveTitle}>
+                    <form onSubmit={handleSaveTitle} className='flex w-full'>
                         <Input
                             value={titleInput}
                             onChange={handleChangeTitle}
-                            className='!flex !w-[300px] !px-4 !py-1 ml-[-12px] !text-[16px] z-[3] !bg-[#333333]'
+                            className='!flex lg:!w-[300px] !w-full !px-4 !py-1 lg:ml-[-12px] !text-[16px] z-[3] !bg-[#333333]'
                             placeholder='장소 별칭을 입력해 주세요.'
                         />
                     </form>

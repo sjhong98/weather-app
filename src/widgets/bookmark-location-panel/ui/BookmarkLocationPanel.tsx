@@ -12,8 +12,8 @@ export default function BookmarkLocationPanel() {
     const bookmarkCardList = useMemo(() => {
         return (
             locationBookmarkListWithWeather.map((location, index) => (
-                <LocationBookmarkCard key={index} location={location} initialLoading={initialLoading} className='flex w-[150px] md:w-full h-[150px] px-3 py-2 justify-between duration-100' onClick={() => {
-                    navigate(`/${location.district.replaceAll(' ', '-')}`)
+                <LocationBookmarkCard key={index} location={location} initialLoading={initialLoading} className='flex w-[150px] lg:w-full h-[150px] px-3 py-2 justify-between duration-100' onClick={() => {
+                    navigate(`/${location.location?.replaceAll(' ', '-')}`)
                 }} />
             ))
         )
@@ -24,12 +24,12 @@ export default function BookmarkLocationPanel() {
             <p className='font-light text-md mb-[-5px]'>즐겨찾기</p>
 
             {/* Desktop -> Grid */}
-            <div className='hidden w-full md:grid grid-cols-3 gap-4'>
+            <div className='hidden w-full lg:grid grid-cols-3 gap-4'>
                 {bookmarkCardList}
             </div>
 
             {/* Mobile -> Scroll */}
-            <div className='flex w-screen ml-[-20px] pl-5 pb-4 md:hidden overflow-x-scroll overflow-y-hidden'>
+            <div className='flex w-screen ml-[-20px] pl-5 pb-4 lg:hidden overflow-x-scroll overflow-y-hidden'>
                 <div className='flex flex-row h-[150px] gap-4'>
                     {bookmarkCardList}
                     <div className='w-2 flex-shrink-0' />

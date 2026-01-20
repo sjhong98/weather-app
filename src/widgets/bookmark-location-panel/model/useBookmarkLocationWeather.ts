@@ -4,7 +4,7 @@ import { useBookmarkContext, getBookmarkList } from "@/entities/location-bookmar
 import { useWeather } from "@/entities/weather"
 
 export default function useBookmarkLocationWeather() {
-    const { useWeatherQuries } = useWeather()
+    const { useWeatherQueries } = useWeather()
     const { locationBookmarkListWithWeather, setLocationBookmarkListWithWeather } = useBookmarkContext()
 
     const [initialLoading, setInitialLoading] = useState(true)
@@ -13,7 +13,7 @@ export default function useBookmarkLocationWeather() {
         return getBookmarkList() || []
     })
 
-    const weatherQuries = useWeatherQuries(bookmarkList.map((districtItem: any) => districtItem.district))
+    const weatherQuries = useWeatherQueries(bookmarkList.map((locationItem: any) => locationItem.location))
 
     useEffect(() => {
         setInitialLoading(true)
@@ -22,20 +22,20 @@ export default function useBookmarkLocationWeather() {
 
         if (_locationBookmarkList) {
             // 데이터 패칭 이전 LocalStorage 기반 북마크 리스트 세팅
-            setLocationBookmarkListWithWeather(_locationBookmarkList.map((districtItem: any) => {
+            setLocationBookmarkListWithWeather(_locationBookmarkList.map((locationItem: any) => {
                 return {
-                    district: districtItem.district,
+                    location: locationItem.location,
                     weather: null,
-                    title: districtItem.title,
+                    title: locationItem.title,
                 }
             }))
 
             // 데이터 패칭 이후 날씨 데이터 세팅
-            setLocationBookmarkListWithWeather(_locationBookmarkList.map((districtItem: any, index: number) => {
+            setLocationBookmarkListWithWeather(_locationBookmarkList.map((locationItem: any, index: number) => {
                 return {
-                    district: districtItem.district,
+                    location: locationItem.location,
                     weather: weatherQuries[index]?.data || null,
-                    title: districtItem.title,
+                    title: locationItem.title,
                 }
             }))
         } else {

@@ -4,11 +4,11 @@ import { useBookmark, useBookmarkContext, getBookmarkList, setBookmarkList } fro
 import type { Weather } from "@/shared/types"
 
 
-export default function useUpdateBookmark(district: string | null) {
-    const { checkIsBookmarked, titleInput, setTitleInput, setTitleOrigin, setTitleChanged, setTitleSaved } = useBookmark(district)
+export default function useUpdateBookmark(location: string | null) {
+    const { checkIsBookmarked, titleInput, setTitleInput, setTitleOrigin, setTitleChanged, setTitleSaved } = useBookmark(location)
     const { locationBookmarkListWithWeather, setLocationBookmarkListWithWeather } = useBookmarkContext()
 
-    const addBookmark = useCallback((district: string, weather: Weather) => {
+    const addBookmark = useCallback((location: string, weather: Weather) => {
         const bookmarkList = getBookmarkList()
 
         if(bookmarkList.length >= 6) {
@@ -18,48 +18,48 @@ export default function useUpdateBookmark(district: string | null) {
 
         // Update LocalStorage
         bookmarkList.push({
-            district,
+            location,
             title: ''
         })
 
         setBookmarkList(bookmarkList)
 
         // Update Context
-        setLocationBookmarkListWithWeather([...locationBookmarkListWithWeather, { district, weather }])
+        setLocationBookmarkListWithWeather([...locationBookmarkListWithWeather, { location, weather }])
         return true
     }, [getBookmarkList, locationBookmarkListWithWeather])
 
-    const removeBookmark = useCallback((district: string) => {
+    const removeBookmark = useCallback((location: string) => {
         let bookmarkList = getBookmarkList()
 
         // Update LocalStorage
-        bookmarkList.splice(bookmarkList.findIndex((item: any) => item.district === district), 1)
+        bookmarkList.splice(bookmarkList.findIndex((item: any) => item.location === location), 1)
         setBookmarkList(bookmarkList)
 
         // Update Context
-        setLocationBookmarkListWithWeather(locationBookmarkListWithWeather.filter((item) => item.district !== district))
+        setLocationBookmarkListWithWeather(locationBookmarkListWithWeather.filter((item) => item.location !== location))
 
         return true
     }, [getBookmarkList, locationBookmarkListWithWeather])
 
-    const toggleBookmark = useCallback((district: string, weather: Weather) => {
+    const toggleBookmark = useCallback((location: string, weather: Weather) => {
         let result = false
 
-        if (checkIsBookmarked(district)) {
-            result = removeBookmark(district)
+        if (checkIsBookmarked(location)) {
+            result = removeBookmark(location)
         } else {
             if(!weather) return
-            result = addBookmark(district, weather)
+            result = addBookmark(location, weather)
         }
         return result
     }, [checkIsBookmarked, addBookmark, removeBookmark])
 
-    const updateBookmarkTitle = useCallback((district: string, title: string) => {
+    const updateBookmarkTitle = useCallback((location: string, title: string) => {
         let bookmarkList = getBookmarkList()
 
         // Update LocalStorage
         bookmarkList = bookmarkList.map((item: any) => {
-            if(item.district === district) {
+            if(item.location === location) {
                 return { ...item, title }
             }
             return item
@@ -68,7 +68,7 @@ export default function useUpdateBookmark(district: string | null) {
 
         // Update Context
         setLocationBookmarkListWithWeather(locationBookmarkListWithWeather.map((item) => {
-            if(item.district === district) {
+            if(item.location === location) {
                 return { ...item, title }
             }
             return item
@@ -81,21 +81,21 @@ export default function useUpdateBookmark(district: string | null) {
     }, [])
 
     const handleSaveTitle = useCallback((e?: any) => {
-        if(!district) {
+        if(!location) {
             return
         }
         
         e?.preventDefault()
         setTitleChanged(false)
 
-        updateBookmarkTitle(district, titleInput)
+        updateBookmarkTitle(location, titleInput)
         setTitleOrigin(titleInput)
 
         setTitleSaved(true)
         setTimeout(() => {
             setTitleSaved(false)
         }, 2000)
-    }, [titleInput, updateBookmarkTitle, district])
+    }, [titleInput, updateBookmarkTitle, location])
 
 
     return {

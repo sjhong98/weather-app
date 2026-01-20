@@ -2,17 +2,17 @@ import MyLocationIcon from '@mui/icons-material/MyLocation'
 
 interface CurrentLocationInfoProps {
     isMyLocation: boolean;
-    district: string;
+    location: string;
 }
 
 
-export default function CurrentLocationInfo({ isMyLocation, district }: CurrentLocationInfoProps) {
+export default function CurrentLocationInfo({ isMyLocation, location }: CurrentLocationInfoProps) {
     return (
-        <div className='flex flex-row items-center gap-2 px-5 md:px-12'>
+        <div className='flex flex-row items-center gap-2 px-5 lg:px-12'>
             {isMyLocation && (
                 <MyLocationIcon sx={{ fontSize: 20 }} />
             )}
-            <p className='font-normal text-lg'>{district.replaceAll('-', ' ')}</p>
+            <p className='font-normal text-lg'>{location.replaceAll('-', ' ')}</p>
         </div>
     )
 }

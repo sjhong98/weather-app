@@ -11,9 +11,9 @@ export default function Home() {
                 <Logo />
             </div>
             <div className='flex flex-col w-full items-center'>
-                <div className="flex flex-col md:flex-row w-full gap-10 justify-center">
+                <div className="flex flex-col lg:flex-row w-full gap-10 justify-center">
                     <div
-                        className='flex flex-col w-full md:w-[500px] gap-5 items-center'
+                        className='flex flex-col w-full lg:w-[500px] gap-5 items-center'
                     >
                         <BookmarkLocationPanel />
                         <SearchLocationForm />

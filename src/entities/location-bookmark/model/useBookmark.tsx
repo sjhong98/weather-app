@@ -2,25 +2,25 @@ import { useCallback, useEffect } from "react"
 
 import { getBookmarkList, useBookmarkContext } from "@/entities/location-bookmark"
 
-export default function useBookmark(district?: string | null) {
+export default function useBookmark(location?: string | null) {
     const { titleInput, setTitleInput, titleOrigin, setTitleOrigin, titleChanged, setTitleChanged, titleSaved, setTitleSaved, isBookmarked, setIsBookmarked } = useBookmarkContext()
 
-    const checkIsBookmarked = useCallback((district: string) => {
-        if (!district) {
+    const checkIsBookmarked = useCallback((location?: string) => {
+        if (!location) {
             return false
         }
 
         const bookmarkList = getBookmarkList()
-        return Boolean(bookmarkList.find((item: any) => item.district === district))
+        return Boolean(bookmarkList.find((item: any) => item.location === location))
     }, [getBookmarkList])
 
     useEffect(() => {
-        if (!district) {
+        if (!location) {
             return
         }
 
         const bookmarkList = getBookmarkList()
-        const bookmark = bookmarkList.find((item: any) => item.district === district)
+        const bookmark = bookmarkList.find((item: any) => item.location === location)
         if (bookmark) {
             setTitleInput(bookmark.title)
             setTitleOrigin(bookmark.title)
@@ -28,8 +28,8 @@ export default function useBookmark(district?: string | null) {
             setTitleInput('')
             setTitleOrigin('')
         }
-        setIsBookmarked(checkIsBookmarked(district))
-    }, [district])
+        setIsBookmarked(checkIsBookmarked(location))
+    }, [location])
 
     useEffect(() => {
         if (titleInput === titleOrigin) setTitleChanged(false)

@@ -1,3 +1,3 @@
 // Model
 export { default as useSearchLocation } from './useSearchLocation'
-export { default as useCurrentDistrict } from './useCurrentDistrict'
+export { default as useCurrentLocation } from './useCurrentLocation'

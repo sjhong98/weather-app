@@ -12,16 +12,16 @@ export default function useSearchLocation() {
     const timerRef = useRef<any>(null)
     
     const [search, setSearch] = useState('')
-    const [filteredDistrictList, setFilteredDistrictList] = useState<string[]>([])
+    const [filteredLocationList, setFilteredLocationList] = useState<string[]>([])
 
     const searchLocation = useCallback(() => {
         if (search.length === 0) {
-            setFilteredDistrictList([])
+            setFilteredLocationList([])
             return
         }
 
-        let result = koreaDistricts.filter((district) => district.includes(search))
-        setFilteredDistrictList(result)
+        let result = koreaDistricts.filter((location) => location.includes(search))
+        setFilteredLocationList(result)
     }, [search])
 
     useEffect(() => {
@@ -33,17 +33,17 @@ export default function useSearchLocation() {
         }, DEBOUNCE_TIME)
     }, [search])
 
-    const handleSelectLocation = useCallback((district: string) => {
-        navigate(`/${district}`)
+    const handleSelectLocation = useCallback((location: string) => {
+        navigate(`/${location}`)
 
         if (isMobile) {
             setSearch('')
-            setFilteredDistrictList([])
+            setFilteredLocationList([])
         }
     }, [navigate])
 
     return {
-        filteredDistrictList,
+        filteredLocationList,
         handleSelectLocation,
         search,
         setSearch

@@ -8,7 +8,7 @@ interface HourlyWeatherListProps {
 
 export default function HourlyWeatherList({ weather }: HourlyWeatherListProps) {
     return (
-        <div className='flex flex-row gap-6 md:gap-12 px-5 pb-5 md:px-12 md:pb-10 overflow-x-scroll'>
+        <div className='flex flex-row gap-6 lg:gap-12 px-5 pb-5 lg:px-12 lg:pb-10 overflow-x-scroll'>
             {
                 weather.hourly.slice(0, 24).map((hour: any) => (
                     <div key={hour.dt} className='flex flex-row flex-shrink-0'>

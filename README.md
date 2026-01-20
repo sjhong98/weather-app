@@ -13,7 +13,7 @@
 
 ```
 git clone https://github.com/sjhong98/realteeth-exercise
-cd your-project
+cd realteeth-exercise
 ```
 
 ### 2. Install Dependencies
@@ -27,8 +27,8 @@ bun install
 프로젝트 루트 경로에 `.env.local` 파일을 생성하고 아래 값을 설정합니다.
 
 ```
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-VITE_OPENWEATHER_API_KEY=your_openweather_api_key
+VITE_OPENWEATHER_API_KEY=53b3f12562e7cefd2446a68c7dd85ca2
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh5ZGhxcm9oaHBnd3liaGxod3VuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyMDMxMzIsImV4cCI6MjA1OTc3OTEzMn0.tqL6m2AdjgZ0bYTl5hgDO8eAWfUNIEhn1q_ogJD2T1w
 ```
 
 ### 4. Run Development Server

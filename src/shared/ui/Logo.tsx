@@ -7,9 +7,9 @@ export default function Logo() {
         <div className="flex flex-row h-[30px] lg:h-[60px] gap-2 scale-[0.5] lg:scale-[1] cursor-pointer" onClick={() => {
             window.location.href = '/'
         }}>
-            <WbSunnyIcon sx={{ fontSize: 60 }} />
-            <CloudIcon sx={{ fontSize: 60 }} />
-            <AcUnitIcon sx={{ fontSize: 60 }} />
+            <WbSunnyIcon sx={{ fontSize: 60, color: 'white' }} />
+            <CloudIcon sx={{ fontSize: 60, color: 'white' }} />
+            <AcUnitIcon sx={{ fontSize: 60, color: 'white' }} />
         </div>
     )
 }

@@ -10,7 +10,7 @@ export default function CurrentLocationInfo({ isMyLocation, location }: CurrentL
     return (
         <div className='flex flex-row items-center gap-2 px-5 lg:px-12'>
             {isMyLocation && (
-                <MyLocationIcon sx={{ fontSize: 20 }} />
+                <MyLocationIcon sx={{ fontSize: 20, color: 'white' }} />
             )}
             <p className='font-normal text-lg'>{location.replaceAll('-', ' ')}</p>
         </div>

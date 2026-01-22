@@ -32,7 +32,7 @@ export default function WeatherTitleUpdateForm({ isBookmarked, handleSaveTitle, 
                         scale: titleChanged ? 1 : 0,
                     }}
                     onClick={handleSaveTitle}>
-                    <SaveIcon />
+                    <SaveIcon sx={{ color: 'white' }} />
                 </button>
             </div>
             <div
@@ -42,7 +42,7 @@ export default function WeatherTitleUpdateForm({ isBookmarked, handleSaveTitle, 
                     transform: titleSaved ? 'translateY(-8px)' : 'translateY(-40px)',
                 }}
             >
-                <CheckIcon sx={{ fontSize: 14 }} className='!text-[#6AE554]' />
+                <CheckIcon sx={{ fontSize: 14, color: 'white' }} />
                 <p
                     className='text-[14px] !text-[#6AE554]'
                 >저장되었습니다.</p>

@@ -40,7 +40,7 @@ export default function LocationBookmarkCard(props: LocationBookmarkCardProps) {
                 </>
             ) : initialLoading ? (
                 <div className='flex flex-col w-full items-center justify-center text-center text-[12px] leading-[15px] break-keep opacity-50'>
-                    <WbSunnyIcon sx={{ fontSize: 60 }} className='mt-[-80px] animate-pulse' />
+                    <WbSunnyIcon sx={{ fontSize: 60, color: 'white' }} className='mt-[-80px] animate-pulse' />
                 </div>
             ) : (
                 <div className='flex flex-col w-full items-center justify-center text-center text-[12px] leading-[15px] break-keep opacity-50'>
